@@ -1,0 +1,226 @@
+body {font-family: Arial;
+    background: #222D32;
+    color: white;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: black;
+  height:fit-content;
+}
+.tab img{
+    float: left;
+    padding: 4px 16px;
+}
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 18px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: white;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: rgb(109, 109, 109);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: rgb(0, 87, 0);
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/*CSS for room buttons*/
+.btn-row:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+.btn-column{
+  float: left;
+  width: 30%;
+  padding: 10px;
+  height: 220px;
+}
+.btn-format {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #04AA6D; 
+  border: 1px solid rgb(0, 54, 0); 
+  color: white; 
+  padding: 10px 24px; 
+}
+.btn-format:hover {
+  background-color: #3e8e41;
+}
+
+
+/*CSS for lists*/
+.lst-format{
+  background-color: #04AA6D;
+  padding-left:20px
+}
+.lst-format tr{
+  width:100px;
+  height: 25px;
+}
+
+
+/*CSS for slider*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* list hide and reveal contents */
+.hide{
+  display:none;  
+}
+
+.reveal{
+  display:contents;
+}
+
+
+/* POPUPS */
+
+/* The Modal (background) */
+.popup {
+  text-align: center;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.popup-contents {
+  text-align: center;
+  background-color: #000;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+/* The Close Button */
+.popup-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popup-formular{
+  margin-bottom: 20px;
+}
+
+
+.insert-btn{
+  width: 19%;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #04AA6D; 
+  border: 1px solid rgb(0, 54, 0); 
+  color: white; 
+  padding: 10px 24px; 
+}
+
+.colorpick{
+  width: 50px;
+  height: 25px;
+}

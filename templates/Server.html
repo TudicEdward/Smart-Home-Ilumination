@@ -1,0 +1,198 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="shortcut icon" type="image/jpg" href="{{url_for('static',filename='favicon.ico')}}"/>
+    <title>EndoSmart</title>
+</head>
+<body>
+    <div class="tab">
+        <img src="{{url_for('static',filename='img/logo.png')}}" alt="Logo aplicatie" width="50" height="48">
+        <button class="tablinks" onclick="mainServer(event, 'Status')" id="startpage">Status</button>
+        <button class="tablinks" onclick="mainServer(event, 'Settings')">Settings</button>
+        <button class="tablinks" onclick="mainServer(event, 'About')">About</button>
+      </div>
+      
+      <div id="Status" class="tabcontent">
+        <h3>House rooms</h3>
+
+        <div class="btn-row" id="house">
+        </div>
+        
+      </div>
+      
+      <div id="Settings" class="tabcontent">
+        <h3>Settings</h3>
+        <div>
+          <button class="insert-btn" id="addhouseroom" onclick="openPopup1(this.id)">Add House Room</button>
+          <button class="insert-btn" id="addroom" onclick="openPopup2(this.id)">Add Room Light</button>
+          <button class="insert-btn" id="addbulb" onclick="openPopup3(this.id)">Add Lightbulb</button>
+          <button class="insert-btn" id="addsenz" onclick="openPopup4(this.id)">Add Sensor</button>
+          <button class="insert-btn" id="adduser" onclick="openPopup5(this.id)">Add User</button><br>
+          <button class="insert-btn" id="deletehouseroom" onclick="openPopup9(this.id)">Delete House Room</button>
+          <button class="insert-btn" id="deleteroomlight" onclick="openPopup10(this.id)">Delete Room Light</button>
+          <button class="insert-btn" id="deletebulb" onclick="openPopup7(this.id)">Delete Lightbulb</button>
+          <button class="insert-btn" id="deletesensor" onclick="openPopup6(this.id)">Delete Sensor</button>
+          <button class="insert-btn" id="deleteuser" onclick="openPopup8(this.id)">Delete User</button><br>
+          <button class="insert-btn" id="modifypreferences" onclick="openPopup11(this.id)">Modify preferences</button>
+        </div>
+
+        <div id="popuphouse" class="popup">
+          <div class="popup-contents">
+            <span class="popup-close" onclick="close1()">&times;</span>
+            <form action="{{ url_for('inserthouseroom') }}" method="post">
+              <label for="roomtype">Insert room name</label>
+              <input class="popup-formular"type="text" id="roomtype" name="roomtype"></input><br>
+              <button type="submit">Add</button>
+            </form>
+            
+          </div>
+        </div>
+
+        <div id="popuproom" class="popup">
+          <div class="popup-contents">
+            <span class="popup-close" onclick="close2()">&times;</span>
+            <form action="{{ url_for('insertroomlight') }}" method="post">
+              <label for="selectbulbs">Select lightbulb</label>
+              <select class="popup-formular" id="selectbulbs" name="selectbulbs">
+
+              </select><br>
+              <label for="room_type">Select room</label>
+              <select class="popup-formular" id="room_type" name="room_type">
+
+              </select><br>
+              <button type="submit">Add</button>
+            </form>
+            
+          </div>
+        </div>
+
+        <div id="popupbulb" class="popup">
+          <div class="popup-contents">
+            <span class="popup-close" onclick="close3()">&times;</span>
+            <h>To add a new lightbulb press the button "Add"</h><br><br>
+            <form action="{{ url_for('insertbulb') }}" method="post">
+              <button type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="popupsens" class="popup">
+          <div class="popup-contents">
+            <span class="popup-close" onclick="close4()">&times;</span>
+            <form action="{{ url_for('insertsensor') }}" method="post">
+              <label for="room_types">Select room</label>
+              <select class="popup-formular" id="room_types" name="room_types">
+              </select><br>
+              <label for="senstype">Select sensor type</label>
+              <select class="popup-formular" id="senstype" name="senstype">
+                <option value="luxmeter">Luxmeter</option>
+                <option value="movement">Movement</option>
+              </select><br>
+              <button type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="popupuser" class="popup">
+          <div class="popup-contents">
+            <span class="popup-close" onclick="close5()">&times;</span>
+            <form action="{{ url_for('insertuser') }}" method="post">
+              <label for="username">Username</label>
+              <input class="popup-formular" type="text" id="username" name="username"><br>
+              <label for="password">Password</label>
+              <input class="popup-formular" type="text" id="password" name="password"><br>
+              <button type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="popupdeletesens" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close6()">&times;</span>
+          <form action="{{ url_for('deletesensor') }}" method="post">
+            <label for="sens_id">Select Sensor</label>
+            <select class="popup-formular" id="sens_id" name="sens_id">
+            </select><br>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupdeletelight" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close7()">&times;</span>
+          <form action="{{ url_for('deletebulb') }}" method="post">
+            <label for="lightbulb_id">Select Lightbulb</label>
+            <select class="popup-formular" id="lightbulb_id" name="lightbulb_id">
+            </select><br>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupdeleteuser" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close8()">&times;</span>
+          <form action="{{ url_for('deleteuser') }}" method="post">
+            <label for="user_name">Select User</label>
+            <select class="popup-formular" id="user_name" name="user_name">
+            </select><br>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupdeletehouseroom" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close9()">&times;</span>
+          <form action="{{ url_for('deletehouseroom') }}" method="post">
+            <label for="house_room_type">Select Room</label>
+            <select class="popup-formular" id="house_room_type" name="house_room_type">
+            </select><br>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupdeleteroomlight" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close10()">&times;</span>
+          <form action="{{ url_for('deleteroomlight') }}" method="post">
+            <label for="house_room_types">Select Room</label>
+            <select class="popup-formular" id="house_room_types" name="house_room_types">
+            </select><br>
+            <label for="bulb_id">Select Lightbulb</label>
+            <select class="popup-formular" id="bulb_id" name="bulb_id">
+            </select><br>
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupmodifypreferences" class="popup">
+        <div class="popup-contents">
+          <span class="popup-close" onclick="close11()">&times;</span>
+          <form action="{{ url_for('insertpreferences') }}" method="post">
+            <label for="leave">Leave for work at:</label>
+            <input type="time" id="leave" name="leave" min="08:00" max="20:00" required><br><br>
+            <label for="arrive">Arrive from work at:</label>
+            <input type="time" id="arrive" name="arrive" min="08:00" max="20:00" required><br>
+            <button type="submit">Modify</button>
+          </form>
+        </div>
+      </div>
+      
+      <div id="About" class="tabcontent">
+        <h1>Version</h1>
+        <h4>version:&emsp;1.0</h4>
+        <h4>OS:&emsp;windows</h4>
+      </div>
+
+</body>
+<script src="{{url_for('static',filename='js/animations.js')}}"></script>
+</html>
